@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="MyService" />
+        <module name="MyModel" />
+        <module name="MyDAO" />
+        <module name="MyManager" />
+        <module name="MyAPI" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="AllTools" target="1.5" />
+      <module name="MyAPI" target="1.7" />
+      <module name="MyAPP" target="1.7" />
+      <module name="MyDAO" target="1.7" />
+      <module name="MyManager" target="1.7" />
+      <module name="MyModel" target="1.7" />
+      <module name="MyService" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

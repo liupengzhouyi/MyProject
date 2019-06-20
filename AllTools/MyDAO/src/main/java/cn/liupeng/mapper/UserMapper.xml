@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 引入dtd -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace就是接口的包名加类名 -->
+<mapper namespace="cn.liupeng.mapper.UserMapper">
+
+    <select id="listUser" resultType="User">
+        select * from javaDataBase.user
+    </select>
+
+    <select id="findUser" resultType="User" parameterType="integer">
+        select * from javaDataBase.user where userID = #{id}
+    </select>
+
+    <select id="findUserByUUID" resultType="User" parameterType="string">
+        select * from javaDataBase.user where userID = #{id}
+    </select>
+
+    <delete id="deleteUser" parameterType="integer">
+        delete * from javaDataBase.user where userID = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="User">
+        update user set
+        userName = #{userName} ,
+        passwordValue = #{passwordValue} ,
+        registeredDate = #{registeredDate} ,
+        money = #{money}
+        where
+        userID =#{userID}
+    </update>
+
+    <insert id="addUser" parameterType="User">
+        insert user(userName, userID, passwordValue, registeredDate, money)
+        value #{userName}, #{userID} , #{passwordValue} , #{registeredDate} , #{money}
+    </insert>
+
+</mapper>

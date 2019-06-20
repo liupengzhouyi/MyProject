@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AllTools/AllTools.iml" filepath="$PROJECT_DIR$/AllTools/AllTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AllTools/MyAPI/MyAPI.iml" filepath="$PROJECT_DIR$/AllTools/MyAPI/MyAPI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AllTools/MyDAO/MyDAO.iml" filepath="$PROJECT_DIR$/AllTools/MyDAO/MyDAO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AllTools/MyManager/MyManager.iml" filepath="$PROJECT_DIR$/AllTools/MyManager/MyManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AllTools/MyModel/MyModel.iml" filepath="$PROJECT_DIR$/AllTools/MyModel/MyModel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AllTools/MyService/MyService.iml" filepath="$PROJECT_DIR$/AllTools/MyService/MyService.iml" />
+    </modules>
+  </component>
+</project>

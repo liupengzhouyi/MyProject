@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/AllTools/MyAPI" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AllTools/MyAPP" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AllTools/MyDAO" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AllTools/MyManager" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AllTools/MyModel" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/AllTools/MyService" charset="UTF-8" />
+  </component>
+</project>
