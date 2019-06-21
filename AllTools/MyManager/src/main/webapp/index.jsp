@@ -16,5 +16,11 @@
 
 <a href="user/find?uuid=12KJB12312RFVG2">测试Spring环境配置</a>
 
+<a href="baseOperation/userRegistration">用户注册</a>
+
+<a href="baseOperation/userLanding">用户登陆</a>
+
+
+
 </body>
 </html>

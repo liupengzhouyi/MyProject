@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <form action="" method="post">
+    <form action="user/registration" method="post">
         <table>
             <tr>
                 <th>
@@ -35,7 +35,7 @@
                     请确认密码
                 </th>
                 <td>
-                    <input type="password" name="user_confirmpassword">
+                    <input type="password" name="user_confirm_password">
                 </td>
             </tr>
             <tr>
