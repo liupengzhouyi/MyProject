@@ -2,7 +2,7 @@ package cn.liupeng.controller;
 
 import cn.liupeng.model.User;
 import cn.liupeng.service.IUserService;
-import cn.liupeng.toools.CheakPasswordTool;
+import cn.liupeng.tools.CheakPasswordTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
