@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    <form action="user/registration" method="post">
+    <form action="/user/registration" method="post">
         <table>
             <tr>
                 <th>

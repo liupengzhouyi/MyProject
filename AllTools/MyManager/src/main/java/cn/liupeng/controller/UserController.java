@@ -21,26 +21,28 @@ public class UserController {
     }
 
     @RequestMapping(path = "/find")
-    public String find(String uuid) {
+    public String find(String uuid_ii) {
         System.out.println("开始执行find方法");
-        User user = userService.selectByUUID(uuid);
-        System.out.println(user);
+        System.out.println(uuid_ii);
+        /*User user = userService.selectByUUID(uuid);
+        System.out.println(user);*/
         System.out.println("结束执行find方法");
         return "success";
     }
 
     @RequestMapping(path = "/registration")
-    public String registration(String user_name, String user_passwor, String user_confirm_password) {
-        String returnValue = "Sessecc";
-        if (user_passwor.equals(user_confirm_password)) {
-            if (user_passwor.length() < 6) {
+    public String registration(String user_name, String user_password, String user_confirm_password) {
+        String returnValue = "success";
+        if (user_password.equals(user_confirm_password)) {
+            if (user_password.length() < 6) {
                 returnValue = "illegalPassword";
             } else {
-                CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_passwor);
+                CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_password);
                 if (cheakPasswordTool.isKey()) {
                     //开始用户注册
-
-
+                    System.out.println(user_name);
+                    System.out.println(user_password);
+                    System.out.println(user_confirm_password);
                 } else {
                     returnValue = "illegalPassword";
                 }
