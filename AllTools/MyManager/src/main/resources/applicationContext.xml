@@ -9,20 +9,20 @@
        xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xmlns:cache="http://www.springframework.org/schema/cache"
        xsi:schemaLocation="
-    http://www.springframework.org/schema/context
-    http://www.springframework.org/schema/context/spring-context.xsd
-    http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans.xsd
-    http://www.springframework.org/schema/tx
-    http://www.springframework.org/schema/tx/spring-tx.xsd
-    http://www.springframework.org/schema/jdbc
-    http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
-    http://www.springframework.org/schema/cache
-    http://www.springframework.org/schema/cache/spring-cache.xsd
-    http://www.springframework.org/schema/aop
-    http://www.springframework.org/schema/aop/spring-aop.xsd
-    http://www.springframework.org/schema/util
-    http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+        http://www.springframework.org/schema/cache
+        http://www.springframework.org/schema/cache/spring-cache.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd">
 
     <!-- 读取数据库连接信息 -->
     <context:property-placeholder location="classpath:db.properties" />
@@ -37,6 +37,7 @@
         <property name="maxPoolSize" value="30" />
     </bean>-->
 
+    <!-- 配置数据库连接池 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
           init-method="init" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driver}" />
@@ -75,14 +76,7 @@
         <!-- 验证连接有效与否的SQL，不同的数据配置不同 -->
         <property name="validationQuery" value="select 1 " />
         <property name="filters" value="stat" />
-        <!--<property name="proxyFilters">
-            <list>
-                <ref bean="logFilter" />
-            </list>
-        </property>-->
     </bean>
-
-
 
     <!-- 配置SessionFactory -->
     <bean id="sessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -92,7 +86,6 @@
         <!--2-->
         <property name="typeAliasesPackage" value="cn.liupeng.model" />
         <property name="mapperLocations" value="classpath:cn/liupeng/mapper/*Mapper.xml" />
-
     </bean>
 
     <!-- 自动生成DAO，Mapper -->
@@ -103,7 +96,7 @@
     </bean>
 
     <!-- 自动扫描Service -->
-    <context:component-scan base-package="cn.liupeng" />
+    <context:component-scan base-package="cn.liupeng.service" />
 
     <!--事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -112,7 +105,5 @@
 
     <!--开启基于注解的事务管理-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
-
-
 
 </beans>

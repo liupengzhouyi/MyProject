@@ -16,10 +16,6 @@ public class UserController {
     @RequestMapping(path = "/login")
     public String login() {
         System.out.println("success");
-        System.out.println("开始执行find方法");
-        User user = userService.selectByUUID("12KJB12312RFVG2");
-        System.out.println(user);
-        System.out.println("结束执行find方法");
         return "success";
     }
 
