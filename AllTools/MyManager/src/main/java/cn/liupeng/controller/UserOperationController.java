@@ -14,6 +14,11 @@ public class UserOperationController {
         return returnValue;
     }
 
+    @RequestMapping(path = "/userLanding")
+    public String userLanding() {
+        String returnValue = "userLanding";
+        return returnValue;
+    }
 
 
 }
