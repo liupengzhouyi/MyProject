@@ -2,6 +2,14 @@ package cn.liupeng.model;
 
 public class Waiter {
 
+    public Waiter() {
+    }
+
+    public Waiter(String waiter_id, String waiter_password_value) {
+        this.waiter_id = waiter_id;
+        this.waiter_password_value = waiter_password_value;
+    }
+
     private String waiter_id;
 
     private String waiter_name;

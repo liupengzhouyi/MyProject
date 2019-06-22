@@ -27,6 +27,7 @@
 
 <a href="waiterOperation/registration">服务员注册</a>
 
+<a href="/waiterOperation/landing">服务员登陆</a>
 
 </body>
 </html>

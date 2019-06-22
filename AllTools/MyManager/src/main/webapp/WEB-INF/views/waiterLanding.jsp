@@ -11,14 +11,14 @@
     <title>服务员登陆</title>
 </head>
 <body>
-<form action="" method="post">
+<form action="/waiter/landing" method="post">
     <table>
         <tr>
             <th>
                 请输入服务员用户名
             </th>
             <td>
-                <input type="text" name="user_name">
+                <input type="text" name="waiter_id">
             </td>
         </tr>
         <tr>
@@ -26,7 +26,7 @@
                 请输入密码
             </th>
             <td>
-                <input type="password" name="user_password">
+                <input type="password" name="waiter_password">
             </td>
         </tr>
         <tr>

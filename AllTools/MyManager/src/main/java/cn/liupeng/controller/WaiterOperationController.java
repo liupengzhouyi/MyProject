@@ -1,9 +1,12 @@
 package cn.liupeng.controller;
 
+import cn.liupeng.model.Waiter;
 import cn.liupeng.tools.TheGlobalVariable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * @author liupeng
@@ -33,5 +36,7 @@ public class WaiterOperationController {
         ModelAndView modelAndView = new ModelAndView(returnPageName);
         return modelAndView;
     }
+
+
 
 }

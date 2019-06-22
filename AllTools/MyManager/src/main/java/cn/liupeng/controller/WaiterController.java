@@ -12,8 +12,10 @@ import cn.liupeng.tools.User.CreateUser_ID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping(path = "/waiter")
@@ -59,6 +61,46 @@ public class WaiterController {
             }
         }
         return returnValue;
+    }
+
+
+
+    @RequestMapping(path = "/landing")
+    public String landing(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest) throws Exception {
+        String returnValue = null;
+        boolean key = false;
+        String returnInformation = null;
+        if ("".equals(waiter_id) || "".equals(waiter_password)) {
+            // 填写内容不全
+            returnInformation = TheGlobalVariable.NOTENOUGHLANDINGINFORMATION;
+            returnValue = TheGlobalVariable.ERROR;
+        } else {
+            // 开始操作
+            String waiter_password_value = new PasswordToPasswordValue(waiter_password).getPasswordVlaue() + "";
+            Waiter waiter = new Waiter(waiter_id, waiter_password_value);
+            String waiter_registered_ip_adress = new IPAdress(httpServletRequest).getIpAdress();
+            waiter.setWaiter_registered_ip_adress(waiter_registered_ip_adress);
+            System.out.println(waiter);
+            key = this.waiterService.landing(waiter);
+            System.out.println(key);
+        }
+        if (key) {
+            returnValue = TheGlobalVariable.SUCCESSS;
+        } else {
+            returnValue = TheGlobalVariable.ERROR;
+        }
+        return returnValue;
+    }
+
+
+    @RequestMapping(path = "/test")
+    public ModelAndView test() {
+        List<Waiter> list = this.waiterService.select();
+        for (Waiter waiter:list) {
+            System.out.println(waiter);
+        }
+        ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.ERROR);
+        return modelAndView;
     }
 
 }

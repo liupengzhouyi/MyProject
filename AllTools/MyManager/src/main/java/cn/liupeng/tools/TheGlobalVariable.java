@@ -1,5 +1,7 @@
 package cn.liupeng.tools;
 
+import javax.sql.rowset.serial.SerialStruct;
+
 public class TheGlobalVariable {
 
     // 密码太短
@@ -31,4 +33,12 @@ public class TheGlobalVariable {
 
     // 服务员登陆
     public static String WAITERLANDING = "waiterLanding";
+
+    // 登陆信息不全，用户ID或者密码没有输入
+    public static String NOTENOUGHLANDINGINFORMATION = "not enough landing information, no user ID or passsword";
+
+    // 用户ID或者密码输入错误
+    public static String ERROELANDINGINFORMATION = "user ID or password was error";
+
+
 }

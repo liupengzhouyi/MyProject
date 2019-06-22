@@ -27,17 +27,17 @@
     <select id="listWaiter" resultType="Waiter">
         select * from taobao_db.waiter;
     </select>
-    
-    <select id="getWaiterPasswordValueByID" resultType="string" parameterType="string">
-        select waiter_password_value from taobao_db.waiter where waiter_id = #{waiter_id} ;
-    </select>
 
-    <select id="findWaiterByNumber" parameterType="integer" resultType="Waiter">
-        select * from taobao_db.waiter where waiter_number = #{waiter_number} ;
+    <select id="findWaiterByNumber" resultType="Waiter" parameterType="integer">
+        select * from waiter where waiter_number = #{waiter_number} ;
     </select>
 
     <select id="findWaiterByID" resultType="Waiter" parameterType="string">
-        select * from taobao_db.waiter where waiter_id = #{waiter_id} ;
+        select * from waiter where waiter_id = #{waiter_id} ;
+    </select>
+
+    <select id="getWaiterPasswordValueByID" resultType="string" parameterType="string">
+        select waiter_password_value from waiter where waiter_id = #{waiter_id} ;
     </select>
 
 </mapper>

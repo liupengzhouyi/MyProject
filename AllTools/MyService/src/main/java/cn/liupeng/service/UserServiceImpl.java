@@ -65,7 +65,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 
     @Override
     public List<User> select() {
-        return null;
+        return this.userMapper.listUser();
     }
 
     /**

@@ -35,10 +35,9 @@ public class WaiterServiceImpl extends BaseServiceImpl<Waiter> implements IWaite
     @Override
     public boolean landing(Waiter waiter) {
         boolean retuanValue = false;
-        String waiter_id = waiter.getWaiter_id();
-        String waiter_passsword_value = waiter.getWaiter_password_value();
-        String db_waiter_passsword_value = this.waiterMapper.getWaiterPasswordValueByID(waiter_id);
-        if (waiter_passsword_value.equals(db_waiter_passsword_value)) {
+        System.out.println("校验密码：" + waiter);
+        String db_waiter_passsword_value = this.waiterMapper.getWaiterPasswordValueByID(waiter.getWaiter_id());
+        if (waiter.getWaiter_password_value().equals(db_waiter_passsword_value)) {
             retuanValue = true;
         } else {
             retuanValue = false;
