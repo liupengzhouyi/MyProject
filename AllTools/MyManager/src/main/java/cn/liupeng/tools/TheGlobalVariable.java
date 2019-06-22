@@ -20,4 +20,10 @@ public class TheGlobalVariable {
     //没有输入用户名
     public static String NOUSERNAME = "not input user name";
 
+    // 成功
+    public static String SUCCESSS = "success";
+
+    // 错误
+    public static String ERROR = "error";
+
 }
