@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 引入dtd -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace就是接口的包名加类名 -->
+<mapper namespace="cn.liupeng.mapper.TestTableMapper">
+    
+    <select id="listTest" resultType="TestTable">
+        select * from taobao_db.testTable;
+    </select>
+
+    <insert id="insert" parameterType="TestTable">
+        insert into taobao_db.testTable(username, password) value (#{username} , #{password} )
+    </insert>
+</mapper>

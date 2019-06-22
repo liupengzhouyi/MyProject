@@ -8,7 +8,7 @@
 <mapper namespace="cn.liupeng.mapper.UserMapper">
 
     <select id="listUser" resultType="User">
-        select * from javaDataBase.user
+        select * from taobao_db.user;
     </select>
 
     <select id="findUser" resultType="User" parameterType="integer">
@@ -34,8 +34,9 @@
     </update>
 
     <insert id="addUser" parameterType="User">
-        insert user(userName, userID, passwordValue, registeredDate, money)
-        value #{userName}, #{userID} , #{passwordValue} , #{registeredDate} , #{money}
+        insert user(user_id, user_name, user_password_value, user_registered_time, user_registered_ip_adress)
+        value
+        (#{user_id} , #{user_name} , #{user_password_value} , #{user_registered_time} , #{user_registered_ip_adress} );
     </insert>
 
 </mapper>

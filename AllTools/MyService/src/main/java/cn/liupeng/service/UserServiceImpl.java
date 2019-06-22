@@ -4,6 +4,8 @@ import cn.liupeng.model.User;
 import cn.liupeng.service.base.BaseServiceImpl;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author liupeng
  */
@@ -13,6 +15,24 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
     @Override
     public User login(String userName, String passwordValue) {
         return null;
+    }
+
+    /**
+     * 用户注册
+     * @param user
+     */
+    @Override
+    public void registration(User user) {
+        this.userMapper.addUser(user);
+    }
+
+    /**
+     * 获取所有用户
+     * @return
+     */
+    @Override
+    public List<User> listUser() {
+        return userMapper.listUser();
     }
 
     @Override

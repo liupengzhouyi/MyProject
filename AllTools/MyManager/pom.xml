@@ -115,7 +115,7 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
+            <artifactId>spring-testTable</artifactId>
             <version>${spring.version}</version>
         </dependency>
 
@@ -197,13 +197,13 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.5.0-M1</version>
-            <scope>test</scope>
+            <scope>testTable</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>5.5.0-M1</version>
-            <scope>test</scope>
+            <scope>testTable</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

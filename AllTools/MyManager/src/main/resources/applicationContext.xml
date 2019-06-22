@@ -65,7 +65,7 @@
         <property name="testOnReturn" value="false" />
 
         <!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
-        <property name="poolPreparedStatements" value="true" />
+        <property name="poolPreparedStatements" value="false" />
         <property name="maxPoolPreparedStatementPerConnectionSize"
                   value="20" />
 
