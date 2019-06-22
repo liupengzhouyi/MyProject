@@ -24,12 +24,26 @@
 
     <dependencies>
 
-        <!-- 后台[manager]依赖sservice -->
+        <!-- 后台[manager]依赖service -->
         <dependency>
             <artifactId>MyService</artifactId>
             <groupId>cn.liupeng</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+        <!-- ===================================================== servlet start ============ -->
+        <!-- Session -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <!-- ===================================================== servlet start ============ -->
 
         <!-- ===================================================== spring / spring-mvc start ============ -->
         <dependency>
@@ -191,6 +205,18 @@
             <version>5.5.0-M1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+
+
         <!-- ===================================================== MyBatis-Spring整合 end =============== -->
 
 

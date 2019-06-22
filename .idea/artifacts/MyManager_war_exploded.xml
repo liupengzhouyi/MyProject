@@ -24,6 +24,8 @@
             <element id="module-output" name="MyModel" />
           </element>
           <element id="library" level="project" name="Maven: org.mybatis:mybatis:3.5.1" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:4.0.1" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.1.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aspects:5.1.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.9.2" />

@@ -1,4 +1,6 @@
-package cn.liupeng.tools;
+package cn.liupeng.tools.Password;
+
+import cn.liupeng.tools.TheGlobalVariable;
 
 /**
 * @Description: 校验密码
@@ -51,7 +53,7 @@ public class CheakPasswordTool {
      * 校验密码长度
      */
     public void passwordLength() {
-        if (this.getPassword().length() < 6) {
+        if (this.getPassword().length() >= 6) {
             this.setKey(true);
             this.setReturnInformation(TheGlobalVariable.SUCCESSPASSWORD);
         } else {

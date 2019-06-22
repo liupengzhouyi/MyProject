@@ -1,5 +1,6 @@
 package cn.liupeng.tools;
 
+import cn.liupeng.tools.Password.CheakPasswordTool;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
