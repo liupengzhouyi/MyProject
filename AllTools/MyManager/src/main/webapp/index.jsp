@@ -25,6 +25,7 @@
 
 <a href="baseOperation/userLanding">用户登陆</a>
 
+<a href="waiterOperation/registration">服务员注册</a>
 
 
 </body>

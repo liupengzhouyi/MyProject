@@ -1,0 +1,260 @@
+create database taobao_db;
+
+use taobao_db;
+
+# 用户注册表
+create table user
+(
+    user_number int auto_increment,
+    user_id varchar(20) not null,
+    user_name varchar(20) not null,
+    user_password_value varchar(20) not null,
+    user_registered_time varchar(20) not null,
+    user_registered_ip_adress varchar(20) not null,
+    constraint user_pk
+        primary key (user_number)
+);
+
+create unique index user_user_id_uindex
+    on user (user_id);
+
+# 服务员注册表
+create table waiter
+(
+    waiter_number int auto_increment,
+    waiter_id varchar(20) not null,
+    waiter_name varchar(20) not null,
+    waiter_password_value varchar(20) not null,
+    waiter_registered_time varchar(20) not null,
+    waiter_registered_ip_adress varchar(20) not null,
+    constraint waiter_pk
+        primary key (waiter_number)
+);
+
+create unique index waiter_waiter_id_uindex
+    on waiter (waiter_id);
+
+# 用户登陆
+create table user_landing
+(
+    landing_number int auto_increment,
+    user_id varchar(20) not null,
+    user_landing_result int not null,
+    user_landing_time varchar(20) not null,
+    user_landing_ip_adreess varchar(20) not null,
+    constraint user_landing_pk
+        primary key (landing_number)
+);
+
+# 服务员登陆
+create table waiter_landing
+(
+    landing_number int auto_increment,
+    waiter_id varchar(20) not null,
+    waiter_landing_result int not null,
+    waiter_landing_time varchar(20) not null,
+    waiter_landing_ip_adreess varchar(20) not null,
+    constraint waiter_landing_pk
+        primary key (landing_number)
+);
+
+# 用户修改密码
+create table user_reset_password
+(
+    number int auto_increment,
+    user_id varchar(20) not null,
+    password_revise_time varchar(20) not null,
+    user_teset_ip_adress varchar(20) not null,
+    constraint user_reset_password_pk
+        primary key (number)
+);
+
+# 服务员修改密码
+create table waiter_reset_password
+(
+    number int auto_increment,
+    waiter_id varchar(20) not null,
+    password_revise_time varchar(20) not null,
+    waiter_teset_ip_adress varchar(20) not null,
+    constraint waiter_reset_password_pk
+        primary key (number)
+);
+
+# 用户详细信息
+
+create table user_information
+(
+    number int auto_increment,
+    user_id int not null,
+    id_card varchar(20) not null,
+    seller_address varchar(100) not null,
+    user_phone_number varchar(20) not null,
+    waiter_evaluation int not null,
+    evaluaed_waiter int not null,
+    credibility int null,
+    reduction int null,
+    constraint user_information_pk
+        primary key (number)
+);
+
+# 服务员详细信息
+create table waiter_information
+(
+    number int auto_increment,
+    waiter_id int not null,
+    id_card varchar(20) not null,
+    seller_address varchar(100) not null,
+    waiter_phone_number varchar(20) not null,
+    user_evaluation int not null,
+    evaluaed_waiter int not null,
+    credibility int null,
+    xianyu_id varchar(20) null,
+    constraint waiter_information_pk
+        primary key (number)
+);
+
+# 商品信息
+create table good_information
+(
+    product_id int auto_increment,
+    product_name varchar(100) not null,
+    product_price double not null,
+    product_condiction int not null,
+    product_new_price double not null,
+    product_register_time varchar(20) not null,
+    register_id varchar(20) not null,
+    remarks varchar(100) null,
+    constraint good_information_pk
+        primary key (product_id)
+);
+
+# 商品图片路径
+create table good_image_path
+(
+    number int auto_increment,
+    product_number int null,
+    product_path varchar(100) not null,
+    constraint good_image_path_pk
+        primary key (number)
+);
+
+# 订单表
+create table order
+(
+    order_count int auto_increment,
+    order_id varchar(20) not null,
+    seller_id varchar(20) not null,
+    product_id varchar(20) not null,
+    product_price double not null,
+    altered_price double null,
+    price_cut_percentage double null,
+    waiter_id varchar(20) not null,
+    order_generation_time varchar(20) not null,
+    order_time varchar(20) null,
+    order_isfinish int not null,
+    finish_time varchar(20) null,
+    order_iscancel int not null,
+    constraint order_pk
+        primary key (order_count)
+);
+
+create unique index order_order_id_uindex
+    on order (order_id);
+
+# 服务员评价卖家
+create table waiter_evaluate_user
+(
+    evaluation_number int auto_increment,
+    order_number varchar(20) not null,
+    evaluation_message varchar(100) null,
+    point_number int null,
+    constraint waiter_evaluate_user_pk
+        primary key (evaluation_number)
+);
+
+create unique index waiter_evaluate_user_order_number_uindex
+    on waiter_evaluate_user (order_number);
+
+# 对服务员评价点赞表
+create table point_waiter_evaluate
+(
+    evaluation_number int not null,
+    pointer_id varchar(20) not null,
+    point_time varchar(20) not null,
+    iscancel_point int not null,
+    cancel_time varchar(20) not null
+);
+
+# 卖家评价服务员
+create table user_evaluate_waiter
+(
+    evaluation_number int auto_increment,
+    order_number varchar(20) not null,
+    evaluation_message varchar(100) null,
+    point_number int null,
+    constraint user_evaluate_waiter_pk
+        primary key (evaluation_number)
+);
+
+# 对用户评价点赞表
+create table point_user_evaluate
+(
+    evaluation_number int not null,
+    pointer_id varchar(20) not null,
+    point_time varchar(20) not null,
+    iscancel_point int not null,
+    cancel_time varchar(20) not null
+);
+
+
+# 降价表
+create table order_reduction
+(
+    order_reduction_id int auto_increment,
+    order_id varchar(20) not null,
+    original_price double not null,
+    discount_price double not null,
+    discount_time varchar(20) not null,
+    discount_reason varchar(100) not null,
+    constraint order_reduction_pk
+        primary key (order_reduction_id)
+);
+
+# 接单表
+
+create table get_order
+(
+    order_number int auto_increment,
+    ordr_id varchar(20) not null,
+    user_id varchar(20) not null,
+    waiter_id varchar(20) not null,
+    order_time varchar(20) not null,
+    constraint `get_order _pk`
+        primary key (order_number)
+);
+
+# 拒单表
+create table rejection_order
+(
+    rejection_order_number int auto_increment,
+    order_id varchar(20) not null,
+    user_id varchar(20) not null,
+    waiter_id varchar(20) not null,
+    rejection_order_time varchar(20) not null,
+    rejection_order_reason varchar(100) null,
+    constraint rejection_order_pk
+        primary key (rejection_order_number)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+

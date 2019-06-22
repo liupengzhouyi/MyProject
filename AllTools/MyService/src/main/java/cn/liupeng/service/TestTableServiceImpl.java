@@ -1,13 +1,21 @@
 package cn.liupeng.service;
 
+import cn.liupeng.mapper.TestTableMapper;
 import cn.liupeng.model.TestTable;
 import cn.liupeng.service.base.BaseServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class TestTableServiceImpl extends BaseServiceImpl<TestTable> implements ITestTableService {
+
+    /**
+     * 统一管理 测试类的DAO
+     */
+    @Autowired
+    protected TestTableMapper testTableMapper;
 
     /**
      * 获取所有
@@ -43,7 +51,7 @@ public class TestTableServiceImpl extends BaseServiceImpl<TestTable> implements 
     }
 
     @Override
-    public TestTable select() {
+    public List<TestTable> select() {
         return null;
     }
 

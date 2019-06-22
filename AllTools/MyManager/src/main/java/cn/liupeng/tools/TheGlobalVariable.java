@@ -26,4 +26,9 @@ public class TheGlobalVariable {
     // 错误
     public static String ERROR = "error";
 
+    // 服务员注册
+    public static String WAITERREGISTRATION = "waiterRegistration";
+
+    // 服务员登陆
+    public static String WAITERLANDING = "waiterLanding";
 }

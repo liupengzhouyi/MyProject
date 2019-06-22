@@ -2,7 +2,7 @@ package cn.liupeng.model;
 
 public class Waiter {
 
-    private int waiter_id;
+    private String waiter_id;
 
     private String waiter_name;
 
@@ -13,11 +13,11 @@ public class Waiter {
     private String waiter_registered_ip_adress;
 
 
-    public int getWaiter_id() {
+    public String getWaiter_id() {
         return waiter_id;
     }
 
-    public void setWaiter_id(int waiter_id) {
+    public void setWaiter_id(String waiter_id) {
         this.waiter_id = waiter_id;
     }
 

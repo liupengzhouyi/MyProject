@@ -1,7 +1,9 @@
 package cn.liupeng.service;
 
+import cn.liupeng.mapper.UserMapper;
 import cn.liupeng.model.User;
 import cn.liupeng.service.base.BaseServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +13,12 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User> implements IUserService {
+
+    /**
+     * 统一管理用户DAO
+     */
+    @Autowired
+    protected UserMapper userMapper;
 
     @Override
     public User login(String userName, String passwordValue) {
@@ -56,7 +64,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
     }
 
     @Override
-    public User select() {
+    public List<User> select() {
         return null;
     }
 

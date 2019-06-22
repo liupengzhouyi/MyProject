@@ -1,5 +1,7 @@
 package cn.liupeng.service.base;
 
+import java.util.List;
+
 /**
  * @author liupeng
  */
@@ -33,7 +35,7 @@ public interface IBaseService<T> {
      * select or list or find
      * @return
      */
-    public T select();
+    public List<T> select();
 
     /**
      * select or list or find by id

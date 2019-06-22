@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 引入dtd -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace就是接口的包名加类名 -->
+<mapper namespace="cn.liupeng.mapper.WaiterMapper">
+
+    <insert id="addWaiter" parameterType="Waiter">
+        insert into waiter(waiter_id, waiter_name, waiter_password_value, waiter_registered_time, waiter_registered_ip_adress)
+        value (#{waiter_id} , #{waiter_name} , #{waiter_password_value} , #{waiter_registered_time} , #{waiter_registered_ip_adress} )
+    </insert>
+
+    <delete id="deleteWaiterByNumber" parameterType="integer">
+        delete from taobao_db.waiter where taobao_db.waiter.waiter_number = #{waiter_number}
+    </delete>
+
+    <delete id="deleteWaiterByID" parameterType="string">
+        delete from taobao_db.waiter where taobao_db.waiter.waiter_id = #{waiter_id}
+    </delete>
+
+    <update id="updateWaiter" parameterType="Waiter">
+        update waiter set waiter_name = #{waiter_name} , waiter_password_value = #{waiter_password_value}  where waiter_id = #{waiter_id} 
+    </update>
+
+    <select id="listWaiter" resultType="Waiter">
+        select * from taobao_db.waiter;
+    </select>
+    
+    <select id="getWaiterPasswordValueByID" resultType="string" parameterType="string">
+        select waiter_password_value from taobao_db.waiter where waiter_id = #{waiter_id} ;
+    </select>
+
+    <select id="findWaiterByNumber" parameterType="integer" resultType="Waiter">
+        select * from taobao_db.waiter where waiter_number = #{waiter_number} ;
+    </select>
+
+    <select id="findWaiterByID" resultType="Waiter" parameterType="string">
+        select * from taobao_db.waiter where waiter_id = #{waiter_id} ;
+    </select>
+
+</mapper>
