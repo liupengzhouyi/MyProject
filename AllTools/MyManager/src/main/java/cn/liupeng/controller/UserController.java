@@ -33,11 +33,12 @@ public class UserController {
     @RequestMapping(path = "/registration")
     public String registration(String user_name, String user_password, String user_confirm_password) {
         String returnValue = "success";
+
         if (user_password.equals(user_confirm_password)) {
             if (user_password.length() < 6) {
                 returnValue = "illegalPassword";
             } else {
-                CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_password);
+                CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_password, user_confirm_password);
                 if (cheakPasswordTool.isKey()) {
                     //开始用户注册
                     System.out.println(user_name);

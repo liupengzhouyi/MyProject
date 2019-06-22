@@ -10,6 +10,8 @@ public class CheakPasswordToolTest {
 
     private String strPassword = "123Lp";
 
+    private String user_confirm_password = "123Lp";
+
     public CheakPasswordTool getCheakPasswordTool() {
         return cheakPasswordTool;
     }
@@ -26,9 +28,17 @@ public class CheakPasswordToolTest {
         this.strPassword = strPpassword;
     }
 
+    public String getUser_confirm_password() {
+        return user_confirm_password;
+    }
+
+    public void setUser_confirm_password(String user_confirm_password) {
+        this.user_confirm_password = user_confirm_password;
+    }
+
     @Before
     public void setUp() throws Exception {
-        this.cheakPasswordTool = new CheakPasswordTool(this.getStrPassword());
+        this.cheakPasswordTool = new CheakPasswordTool(this.getStrPassword(), this.getUser_confirm_password());
     }
 
     @After
@@ -46,6 +56,7 @@ public class CheakPasswordToolTest {
     @Test
     public void isKey() {
         System.out.println(this.getCheakPasswordTool().isKey());
+        System.out.println(this.getCheakPasswordTool().getReturnInformation());
     }
 
     @Test
