@@ -17,5 +17,7 @@ public class TheGlobalVariable {
     //合法的密码
     static String SUCCESSPASSWORD = "success";
 
+    //没有输入用户名
+    static String NOUSERNAME = "not input user name";
 
 }

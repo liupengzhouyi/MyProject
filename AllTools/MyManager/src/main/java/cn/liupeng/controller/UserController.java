@@ -3,6 +3,7 @@ package cn.liupeng.controller;
 import cn.liupeng.model.User;
 import cn.liupeng.service.IUserService;
 import cn.liupeng.tools.CheakPasswordTool;
+import cn.liupeng.tools.TheGlobalVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,24 +33,15 @@ public class UserController {
 
     @RequestMapping(path = "/registration")
     public String registration(String user_name, String user_password, String user_confirm_password) {
-        String returnValue = "success";
+        String returnValue = null;
+        if ("".equals(user_name)) {
 
-        if (user_password.equals(user_confirm_password)) {
-            if (user_password.length() < 6) {
-                returnValue = "illegalPassword";
-            } else {
-                CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_password, user_confirm_password);
-                if (cheakPasswordTool.isKey()) {
-                    //开始用户注册
-                    System.out.println(user_name);
-                    System.out.println(user_password);
-                    System.out.println(user_confirm_password);
-                } else {
-                    returnValue = "illegalPassword";
-                }
-            }
+        }
+        CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_password, user_confirm_password);
+        if (cheakPasswordTool.isKey()) {
+            returnValue = cheakPasswordTool.getReturnInformation();
         } else {
-            returnValue = "differentPassword";
+            returnValue = cheakPasswordTool.getReturnInformation();
         }
         return returnValue;
     }
