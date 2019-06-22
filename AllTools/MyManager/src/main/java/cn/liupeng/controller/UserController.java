@@ -2,9 +2,12 @@ package cn.liupeng.controller;
 
 
 
+import cn.liupeng.model.User;
 import cn.liupeng.service.IUserService;
+import cn.liupeng.tools.DateTime.GetDateTime;
 import cn.liupeng.tools.IPAdress.IPAdress;
 import cn.liupeng.tools.Password.CheakPasswordTool;
+import cn.liupeng.tools.Password.PasswordToPasswordValue;
 import cn.liupeng.tools.TheGlobalVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,8 +51,14 @@ public class UserController {
             CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(user_password, user_confirm_password);
             if (cheakPasswordTool.isKey()) {
                 returnValue = cheakPasswordTool.getReturnInformation();
-                String IP = new IPAdress(httpServletRequest).getIpAdress();
-                System.out.println("IP: " +IP);
+                String user_registered_ip_adress = new IPAdress(httpServletRequest).getIpAdress();
+                System.out.println("IP: " + user_registered_ip_adress);
+                User user = new User();
+                user.setUser_name(user_name);
+                user.setUser_password_value(new PasswordToPasswordValue(user_password).getPasswordVlaue() + "");
+                user.setUser_registered_time(new GetDateTime().getDateTime());
+                user.setUser_registered_ip_adress(user_registered_ip_adress);
+                System.out.println(user);
             } else {
                 returnValue = cheakPasswordTool.getReturnInformation();
             }

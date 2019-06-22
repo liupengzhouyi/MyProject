@@ -47,7 +47,7 @@ public class User {
         this.user_registered_time = user_registered_time;
     }
 
-    public String getUser_registered_ip_adress() {
+    public String getUser_registered_ip_adress(String IP) {
         return user_registered_ip_adress;
     }
 
