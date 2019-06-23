@@ -33,5 +33,7 @@
 
 <a href="/waiterOperation/findWaiterByID"> 通过服务员ID查询服务员 </a>
 
+<a href="/waiterOperation/inputOrderPassword"> 服务员修改密码 </a>
+
 </body>
 </html>

@@ -46,6 +46,15 @@ public class WaiterServiceImpl extends BaseServiceImpl<Waiter> implements IWaite
     }
 
     /**
+     * 修改密码
+     * @param waiter
+     */
+    @Override
+    public void resetWaiterPassword(Waiter waiter) {
+        this.waiterMapper.updateWaiterPassword(waiter);
+    }
+
+    /**
      * 服务员注册
      * 把服务员实体 通过 DAO 层 保存到数据库中
      * @param waiter

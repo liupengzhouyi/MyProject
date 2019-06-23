@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -65,7 +66,14 @@ public class WaiterController {
     }
 
 
-
+    /**
+     * 服务员登陆
+     * @param waiter_id
+     * @param waiter_password
+     * @param httpServletRequest
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(path = "/landing")
     public String landing(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest) throws Exception {
         String returnValue = null;
@@ -74,7 +82,6 @@ public class WaiterController {
         if ("".equals(waiter_id) || "".equals(waiter_password)) {
             // 填写内容不全
             returnInformation = TheGlobalVariable.NOTENOUGHLANDINGINFORMATION;
-            returnValue = TheGlobalVariable.ERROR;
         } else {
             // 开始操作
             String waiter_password_value = new PasswordToPasswordValue(waiter_password).getPasswordVlaue() + "";
@@ -158,5 +165,87 @@ public class WaiterController {
         modelAndView.addObject("returnInformation", information);
         return modelAndView;
     }
+
+    /**
+     * 校验旧密码
+     * @param waiter_id
+     * @param waiter_password
+     * @param httpServletRequest
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(path = "/checkOldPassword")
+    public ModelAndView checkOldPassword(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest) throws Exception {
+        // 开始操作
+        boolean key = false;
+        String waiter_password_value = new PasswordToPasswordValue(waiter_password).getPasswordVlaue() + "";
+        Waiter waiter = new Waiter(waiter_id, waiter_password_value);
+        String waiter_registered_ip_adress = new IPAdress(httpServletRequest).getIpAdress();
+        waiter.setWaiter_registered_ip_adress(waiter_registered_ip_adress);
+        key = this.waiterService.landing(waiter);
+        String checkInformation = "";
+        String returnPage = "";
+        if (key) {
+            // 用户ID与密码校验没有问题
+            checkInformation = TheGlobalVariable.RIGHTIDORPASSWORD;
+            returnPage = TheGlobalVariable.WAITERINPUTNEWPASSWORD;
+            // 添加Session 中添加服务员的ID
+            HttpSession httpSession = httpServletRequest.getSession();
+            httpSession.setAttribute("waiter_id", waiter.getWaiter_id());
+        } else {
+            // 用户名或者密码错误
+            checkInformation = TheGlobalVariable.ERROEIDORPASSWORD;
+            returnPage = TheGlobalVariable.WAITERERRORPAGE;
+        }
+        Information information = new Information();
+        information.setRunLocation("cn.liupeng.controller.WaiterController");
+        information.setRunfunction("服务员修改密码，校验ID和密码是否合法和配套");
+        information.setRunFunctionName("checkOldPassword(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest)");
+        information.setHasReturnObject(false);
+        information.setReturnInformation(checkInformation);
+        //System.out.println(information);
+        ModelAndView modelAndView = new ModelAndView(returnPage);
+        return modelAndView;
+    }
+
+
+    @RequestMapping(path = "/resetPassword")
+    public ModelAndView resetPassword(String waiter_password, String waiter_confirm_password, HttpServletRequest httpServletRequest) {
+        HttpSession httpSession = httpServletRequest.getSession();
+        String waiter_id = (String) httpSession.getAttribute("waiter_id");
+        CheakPasswordTool cheakPasswordTool = new CheakPasswordTool(waiter_password, waiter_confirm_password);
+        Information information = new Information();
+        String returnPage = "";
+        if (cheakPasswordTool.isKey()) {
+            // 密码合法
+            //密码转换为密码值
+            PasswordToPasswordValue passwordToPasswordValue = new PasswordToPasswordValue(waiter_password);
+            String waiter_password_value = passwordToPasswordValue.getPasswordVlaue() + "";
+            Waiter waiter = new Waiter();
+            waiter.setWaiter_id(waiter_id);
+            waiter.setWaiter_password_value(waiter_password_value);
+            // 开始修改密码
+            this.waiterService.resetWaiterPassword(waiter);
+            returnPage = TheGlobalVariable.WAITERSUCCESSPAGE;
+            information.setRunfunction("服务员修改密码成功");
+            information.setReturnInformation(TheGlobalVariable.WAITERRESETPASSWORDSUCCESS);
+        } else {
+            // 密码出现了问题，操！
+            returnPage = TheGlobalVariable.WAITERERRORPAGE;
+            information.setRunfunction("服务员修改密码.校验新密码");
+            information.setReturnInformation(cheakPasswordTool.getReturnInformation());
+        }
+        information.setRunLocation("cn.liupeng.controller.WaiterController");
+        information.setRunFunctionName("resetPassword(String waiter_password, String waiter_confirm_password, HttpServletRequest httpServletRequest)");
+        information.setHasReturnObject(false);
+        System.out.println(information);
+        ModelAndView modelAndView = new ModelAndView(returnPage);
+        modelAndView.addObject("returnInformation", information);
+        return modelAndView;
+    }
+
+
+
+
 
 }

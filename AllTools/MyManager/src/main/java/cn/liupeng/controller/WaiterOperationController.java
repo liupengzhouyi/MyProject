@@ -2,6 +2,7 @@ package cn.liupeng.controller;
 
 import cn.liupeng.model.Waiter;
 import cn.liupeng.tools.TheGlobalVariable;
+import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,6 +46,16 @@ public class WaiterOperationController {
     public ModelAndView findWaiterByID() {
         String returnPageName = TheGlobalVariable.FINDWAITERBYID;
         ModelAndView modelAndView = new ModelAndView(returnPageName);
+        return modelAndView;
+    }
+
+    /**
+     * 服务员修改密码 - 输入旧密码页面
+     * @return
+     */
+    @RequestMapping(path = "/inputOrderPassword")
+    public ModelAndView inputOrdPassword() {
+        ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.WAITERINPUTORDPASSWORD);
         return modelAndView;
     }
 

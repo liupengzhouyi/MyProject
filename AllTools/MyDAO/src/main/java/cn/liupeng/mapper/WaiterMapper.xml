@@ -24,6 +24,10 @@
         update waiter set waiter_name = #{waiter_name} , waiter_password_value = #{waiter_password_value}  where waiter_id = #{waiter_id} 
     </update>
 
+    <update id="updateWaiterPassword" parameterType="Waiter">
+        update waiter set waiter_password_value = #{waiter_password_value}  where waiter_id = #{waiter_id}
+    </update>
+
     <select id="listWaiter" resultType="Waiter">
         select * from taobao_db.waiter;
     </select>

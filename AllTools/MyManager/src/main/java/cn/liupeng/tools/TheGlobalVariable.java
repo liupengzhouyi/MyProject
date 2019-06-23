@@ -38,7 +38,7 @@ public class TheGlobalVariable {
     public static String NOTENOUGHLANDINGINFORMATION = "not enough landing information, no user ID or passsword";
 
     // 用户ID或者密码输入错误
-    public static String ERROELANDINGINFORMATION = "user ID or password was error";
+    public static String ERROELANDINGINFORMATION = "user ID or password was error（用户名或者密码错误）";
 
     // 获取所有服务员信息
     public static String ALLWAITERINFORMATION = "waiter/allWaiterInformation";
@@ -48,4 +48,26 @@ public class TheGlobalVariable {
 
     //转向 用ID 查询 服务员页面
     public static String FINDWAITERBYID = "waiter/findWaiterFrom";
+
+    // 服务员修改密码，输入旧密码
+    public static String WAITERINPUTORDPASSWORD = "waiter/inputOrdPassword";
+
+    //服务员输入新密码，输入新密码
+    public static String WAITERINPUTNEWPASSWORD = "waiter/inputNewPassword";
+
+    // 用户ID或者密码输入错误
+    public static String ERROEIDORPASSWORD = "ID or password was error（用户名或者密码错误）";
+
+    // 用户ID或者密码输入错误
+    public static String RIGHTIDORPASSWORD = "ID and password was right（用户名或者密码正确）";
+
+    // 服务员修改密码错误
+    public static String WAITERERRORPAGE = "waiter/error";
+
+    // 服务员修改密码成功-页面
+    public static String WAITERSUCCESSPAGE = "waiter/success";
+
+    // 修改密码成功
+    public static String WAITERRESETPASSWORDSUCCESS = "reset password success";
+
 }

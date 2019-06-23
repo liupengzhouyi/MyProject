@@ -31,6 +31,12 @@ public interface WaiterMapper {
     public void updateWaiter(Waiter waiter);
 
     /**
+     * 修改服务员密码
+     * @param waiter
+     */
+    public void updateWaiterPassword(Waiter waiter);
+
+    /**
      * 获取所有服务员
      * @return
      */

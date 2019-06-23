@@ -1,0 +1,119 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: liupeng
+  Date: 2019-06-23
+  Time: 17:10
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>成功</title>
+</head>
+<body>
+    <h1>
+        成功页面
+    </h1>
+
+    <hr>
+
+    <table border="1">
+        <tr>
+            <th>
+                <h3>
+                    运行时间
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.runDataTime}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    运行位置
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.runLocation}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    方法名称
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.runFunctionName}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    运行时在做什么
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.runfunction}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    返回信息
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.returnInformation}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    是否有返回对象
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.hasReturnObject}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    对象类型
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.objectType}
+                </h4>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <h3>
+                    对象
+                </h3>
+            </th>
+            <th>
+                <h4>
+                    ${requestScope.returnInformation.object}
+                </h4>
+            </th>
+        </tr>
+    </table>
+</body>
+</html>

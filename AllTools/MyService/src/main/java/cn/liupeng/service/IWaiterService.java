@@ -16,4 +16,10 @@ public interface IWaiterService extends IBaseService<Waiter> {
      * @return
      */
     public boolean landing(Waiter waiter);
+
+    /**
+     * 修改密码
+     * @param waiter
+     */
+    public void resetWaiterPassword(Waiter waiter);
 }
