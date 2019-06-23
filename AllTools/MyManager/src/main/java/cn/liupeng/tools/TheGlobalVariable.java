@@ -72,4 +72,8 @@ public class TheGlobalVariable {
 
     // 所有服务员登陆的记录
     public static String ALLWAITERLANDINGRECORDPAGE = "waiter/allWaiterLandingrecord";
+
+    // 转发到添加服务员登陆页面
+    public static String ADDWAITERLANDINGRRECORDPAGE = "redirect:/WaiterLanding/add";
+
 }

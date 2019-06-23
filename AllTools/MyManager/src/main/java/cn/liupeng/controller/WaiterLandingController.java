@@ -3,6 +3,7 @@ package cn.liupeng.controller;
 import cn.liupeng.mapper.Waiter_landingMapper;
 import cn.liupeng.model.Waiter;
 import cn.liupeng.model.Waiter_landing;
+import cn.liupeng.service.IWaiter_landingService;
 import cn.liupeng.tools.Return.Information;
 import cn.liupeng.tools.TheGlobalVariable;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +19,24 @@ import java.util.List;
 @RequestMapping(path = "/WaiterLanding")
 public class WaiterLandingController {
 
+    /**
+     * 这是一个业务实现类
+     */
     @Autowired
-    protected Waiter_landingMapper waiter_landingMapper;
+    protected IWaiter_landingService waiter_landingService;
 
+    /**
+     * 添加服务员登陆的记录，
+     * @param httpServletRequest
+     * @return
+     */
     @RequestMapping(path = "/add")
     public ModelAndView addWaiterLandingRecord(HttpServletRequest httpServletRequest) {
         HttpSession httpSession = httpServletRequest.getSession();
         Waiter_landing waiter_landing = (Waiter_landing) httpSession.getAttribute("waiter_landing");
         System.out.println(waiter_landing);
-        this.waiter_landingMapper.addLandingRecord(waiter_landing);
-        ModelAndView modelAndView = new ModelAndView();
+        this.waiter_landingService.insert(waiter_landing);
+        ModelAndView modelAndView = new ModelAndView((String)httpSession.getAttribute("page"));
         return  modelAndView;
     }
 
@@ -37,7 +46,7 @@ public class WaiterLandingController {
      */
     @RequestMapping(path = "/listWaiterLandingRecord")
     public ModelAndView listWaiterLanding() {
-        List<Waiter_landing> list = this.waiter_landingMapper.getAllWaiterLandingRecord();
+        List<Waiter_landing> list = this.waiter_landingService.select();
         Information information = new Information();
         information.setRunLocation("cn.liupeng.controller.WaiterLandingController");
         information.setRunfunction("获取所有服务员的登陆记录");
@@ -59,7 +68,7 @@ public class WaiterLandingController {
     public ModelAndView getWaiterLandingRecord(String waiter_id) {
         Waiter waiter = new Waiter();
         waiter.setWaiter_id(waiter_id);
-        List<Waiter_landing> list = this.waiter_landingMapper.getWaitterLandingRecord(waiter);
+        List<Waiter_landing> list = this.waiter_landingService.getWaiterLanding(waiter);
         Information information = new Information();
         information.setRunLocation("cn.liupeng.controller.WaiterLandingController");
         information.setRunfunction("通过服务员ID获取服务员的登陆记录");

@@ -2,6 +2,7 @@ package cn.liupeng.controller;
 
 import cn.liupeng.model.User;
 import cn.liupeng.model.Waiter;
+import cn.liupeng.model.Waiter_landing;
 import cn.liupeng.service.IWaiterService;
 import cn.liupeng.tools.DateTime.GetDateTime;
 import cn.liupeng.tools.IPAdress.IPAdress;
@@ -78,7 +79,15 @@ public class WaiterController {
     public String landing(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest) throws Exception {
         String returnValue = null;
         boolean key = false;
+        // ------------------------------------------------------------------------------------------------
+        Waiter_landing waiter_landing = new Waiter_landing();
+        waiter_landing.setWaiter_id(waiter_id);
+        waiter_landing.setWaiter_landing_time(new GetDateTime().getDateTime());
+        String waiter_landing_ip_adress = new IPAdress(httpServletRequest).getIpAdress();
+        waiter_landing.setWaiter_landing_ip_adress(waiter_landing_ip_adress);
+        // ------------------------------------------------------------------------------------------------
         String returnInformation = null;
+        String page = "";
         if ("".equals(waiter_id) || "".equals(waiter_password)) {
             // 填写内容不全
             returnInformation = TheGlobalVariable.NOTENOUGHLANDINGINFORMATION;
@@ -88,18 +97,33 @@ public class WaiterController {
             Waiter waiter = new Waiter(waiter_id, waiter_password_value);
             String waiter_registered_ip_adress = new IPAdress(httpServletRequest).getIpAdress();
             waiter.setWaiter_registered_ip_adress(waiter_registered_ip_adress);
-            System.out.println(waiter);
             key = this.waiterService.landing(waiter);
-            System.out.println(key);
         }
         if (key) {
-            returnValue = TheGlobalVariable.SUCCESSS;
+            waiter_landing.setWaiter_landing_result(1);
+            page = TheGlobalVariable.SUCCESSS;
+            returnValue = TheGlobalVariable.ADDWAITERLANDINGRRECORDPAGE;
         } else {
-            returnValue = TheGlobalVariable.ERROR;
+            waiter_landing.setWaiter_landing_result(0);
+            page = TheGlobalVariable.ERROR;
         }
+        addWaiterLanding(httpServletRequest, page, waiter_landing);
+        System.out.println(waiter_landing);
+        System.out.println("returnValue" + returnValue);
         return returnValue;
     }
 
+    /**
+     * 服务员登陆中在表中添加数据
+     * 1。 登陆记录
+     * 2。 转发页面
+     * @param httpServletRequest
+     */
+    public void addWaiterLanding(HttpServletRequest httpServletRequest, String page, Waiter_landing waiter_landing) {
+        HttpSession httpSession = httpServletRequest.getSession();
+        httpSession.setAttribute("page", page);
+        httpSession.setAttribute("waiter_landing", waiter_landing);
+    }
 
     @RequestMapping(path = "/test")
     public ModelAndView test() {
@@ -209,6 +233,13 @@ public class WaiterController {
     }
 
 
+    /**
+     * 修改新的密码
+     * @param waiter_password
+     * @param waiter_confirm_password
+     * @param httpServletRequest
+     * @return
+     */
     @RequestMapping(path = "/resetPassword")
     public ModelAndView resetPassword(String waiter_password, String waiter_confirm_password, HttpServletRequest httpServletRequest) {
         HttpSession httpSession = httpServletRequest.getSession();
@@ -243,9 +274,6 @@ public class WaiterController {
         modelAndView.addObject("returnInformation", information);
         return modelAndView;
     }
-
-
-
 
 
 }

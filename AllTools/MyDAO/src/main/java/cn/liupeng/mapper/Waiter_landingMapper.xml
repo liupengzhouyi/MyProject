@@ -8,8 +8,17 @@
 <mapper namespace="cn.liupeng.mapper.Waiter_landingMapper">
 
     <insert id="addLandingRecord" parameterType="Waiter_landing">
-        insert into taobao_db.waiter_landing(waiter_id, waiter_landing_result, waiter_landing_time, waiter_landing_ip_adreess)
-        value (#{waiter_id} , #{waiter_landing_result} , #{waiter_landing_time} , #{waiter_landing_ip_adress} )
+        insert into taobao_db.waiter_landing(
+        waiter_id,
+        waiter_landing_result,
+        waiter_landing_time,
+        waiter_landing_ip_adreess)
+        value (
+        #{waiter_id} ,
+        #{waiter_landing_result} ,
+        #{waiter_landing_time} ,
+        #{waiter_landing_ip_adress}
+        )
     </insert>
 
     <select id="getAllWaiterLandingRecord" resultType="Waiter_landing">

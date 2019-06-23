@@ -2,7 +2,6 @@ package cn.liupeng.model;
 
 public class Waiter_landing {
 
-    private int landing_number ;
 
     private String waiter_id;
 
@@ -11,14 +10,6 @@ public class Waiter_landing {
     private String waiter_landing_time;
 
     private String waiter_landing_ip_adress;
-
-    public int getLanding_number() {
-        return landing_number;
-    }
-
-    public void setLanding_number(int landing_number) {
-        this.landing_number = landing_number;
-    }
 
     public String getWaiter_id() {
         return waiter_id;
@@ -54,9 +45,7 @@ public class Waiter_landing {
 
     @Override
     public String toString() {
-        return "Waiter_landing{" +
-                "landing_number=" + landing_number +
-                ", waiter_id='" + waiter_id + '\'' +
+        return "Waiter_landing{ waiter_id='" + waiter_id + '\'' +
                 ", waiter_landing_result=" + waiter_landing_result +
                 ", waiter_landing_time='" + waiter_landing_time + '\'' +
                 ", waiter_landing_ip_adress='" + waiter_landing_ip_adress + '\'' +
