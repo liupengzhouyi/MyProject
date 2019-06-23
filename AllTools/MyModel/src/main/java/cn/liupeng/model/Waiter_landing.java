@@ -6,9 +6,9 @@ public class Waiter_landing {
 
     private String waiter_id;
 
-    private int waiter_landing_time;
+    private int waiter_landing_result;
 
-    private String landing_time;
+    private String waiter_landing_time;
 
     private String waiter_landing_ip_adress;
 
@@ -28,20 +28,20 @@ public class Waiter_landing {
         this.waiter_id = waiter_id;
     }
 
-    public int getWaiter_landing_time() {
+    public int getWaiter_landing_result() {
+        return waiter_landing_result;
+    }
+
+    public void setWaiter_landing_result(int waiter_landing_result) {
+        this.waiter_landing_result = waiter_landing_result;
+    }
+
+    public String getWaiter_landing_time() {
         return waiter_landing_time;
     }
 
-    public void setWaiter_landing_time(int waiter_landing_time) {
+    public void setWaiter_landing_time(String waiter_landing_time) {
         this.waiter_landing_time = waiter_landing_time;
-    }
-
-    public String getLanding_time() {
-        return landing_time;
-    }
-
-    public void setLanding_time(String landing_time) {
-        this.landing_time = landing_time;
     }
 
     public String getWaiter_landing_ip_adress() {
@@ -57,8 +57,8 @@ public class Waiter_landing {
         return "Waiter_landing{" +
                 "landing_number=" + landing_number +
                 ", waiter_id='" + waiter_id + '\'' +
-                ", waiter_landing_time=" + waiter_landing_time +
-                ", landing_time='" + landing_time + '\'' +
+                ", waiter_landing_result=" + waiter_landing_result +
+                ", waiter_landing_time='" + waiter_landing_time + '\'' +
                 ", waiter_landing_ip_adress='" + waiter_landing_ip_adress + '\'' +
                 '}';
     }

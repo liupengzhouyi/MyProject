@@ -1,6 +1,10 @@
 package cn.liupeng.mapper;
 
-public interface Waiter_landing {
+import cn.liupeng.model.Waiter;
+
+import java.util.List;
+
+public interface Waiter_landingMapper {
 
     /**
      * 添加某一条登陆记录
@@ -11,13 +15,14 @@ public interface Waiter_landing {
     /**
      * 获取所有的登陆记录
      */
-    public void getAllWaiterLandingRecord();
+    public List<cn.liupeng.model.Waiter_landing> getAllWaiterLandingRecord();
 
     /**
      * 获取某一个服务员的登陆记录
-     * @param waiter_landing
+     * @param waiter
+     * @return
      */
-    public void getWaitterLandingRecord(cn.liupeng.model.Waiter_landing waiter_landing);
+    public List<cn.liupeng.model.Waiter_landing> getWaitterLandingRecord(Waiter waiter);
 
 
 

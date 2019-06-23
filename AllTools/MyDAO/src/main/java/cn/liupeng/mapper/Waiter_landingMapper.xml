@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 引入dtd -->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace就是接口的包名加类名 -->
+<mapper namespace="cn.liupeng.mapper.Waiter_landingMapper">
+
+    <insert id="addLandingRecord" parameterType="Waiter_landing">
+        insert into taobao_db.waiter_landing(waiter_id, waiter_landing_result, waiter_landing_time, waiter_landing_ip_adreess)
+        value (#{waiter_id} , #{waiter_landing_result} , #{waiter_landing_time} , #{waiter_landing_ip_adress} )
+    </insert>
+
+    <select id="getAllWaiterLandingRecord" resultType="Waiter_landing">
+        select * from taobao_db.waiter_landing
+    </select>
+
+    <select id="getWaitterLandingRecord" resultType="Waiter_landing" parameterType="Waiter">
+        select * from taobao_db.waiter_landing where waiter_id = #{waiter_id}
+    </select>
+
+</mapper>
