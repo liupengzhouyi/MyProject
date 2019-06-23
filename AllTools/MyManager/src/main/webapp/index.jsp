@@ -35,5 +35,11 @@
 
 <a href="/waiterOperation/inputOrderPassword"> 服务员修改密码 </a>
 
+<a href="/WaiterLanding/listWaiterLandingRecord">获取所有登陆记录</a>
+
+<a href="/waiterOperation/selectWaiterLanding">获取服务员的登陆记录</a>
+
+
+
 </body>
 </html>

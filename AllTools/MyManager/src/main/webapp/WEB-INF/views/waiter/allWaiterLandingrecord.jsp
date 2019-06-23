@@ -12,7 +12,9 @@
 </head>
 <body>
 
-
+    <h1>
+        ${requestScope.returnInformation}
+    </h1>
 
 </body>
 </html>

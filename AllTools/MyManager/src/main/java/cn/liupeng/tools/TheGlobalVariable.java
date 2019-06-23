@@ -76,4 +76,9 @@ public class TheGlobalVariable {
     // 转发到添加服务员登陆页面
     public static String ADDWAITERLANDINGRRECORDPAGE = "redirect:/WaiterLanding/add";
 
+    // 获取要查询的服务员的ID
+    public static String SELECTWAITERLANDINGID = "waiter/waiterLandingRecord";
+
+
+
 }

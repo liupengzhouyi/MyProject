@@ -102,11 +102,11 @@ public class WaiterController {
         if (key) {
             waiter_landing.setWaiter_landing_result(1);
             page = TheGlobalVariable.SUCCESSS;
-            returnValue = TheGlobalVariable.ADDWAITERLANDINGRRECORDPAGE;
         } else {
             waiter_landing.setWaiter_landing_result(0);
             page = TheGlobalVariable.ERROR;
         }
+        returnValue = TheGlobalVariable.ADDWAITERLANDINGRRECORDPAGE;
         addWaiterLanding(httpServletRequest, page, waiter_landing);
         System.out.println(waiter_landing);
         System.out.println("returnValue" + returnValue);

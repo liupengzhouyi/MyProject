@@ -59,5 +59,14 @@ public class WaiterOperationController {
         return modelAndView;
     }
 
+    /**
+     * 查询某一个服务员的登陆记录
+     * @return
+     */
+    @RequestMapping(path = "/selectWaiterLanding")
+    public ModelAndView selectWaiterLanding() {
+        ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.SELECTWAITERLANDINGID);
+        return modelAndView;
+    }
 
 }
