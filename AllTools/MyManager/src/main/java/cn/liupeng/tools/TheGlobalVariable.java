@@ -70,4 +70,6 @@ public class TheGlobalVariable {
     // 修改密码成功
     public static String WAITERRESETPASSWORDSUCCESS = "reset password success";
 
+    // 所有服务员登陆的记录
+    public static String ALLWAITERLANDINGRECORDPAGE = "waiter/allWaiterLandingrecord";
 }
