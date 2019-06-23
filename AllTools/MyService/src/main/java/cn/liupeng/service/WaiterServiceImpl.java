@@ -112,6 +112,7 @@ public class WaiterServiceImpl extends BaseServiceImpl<Waiter> implements IWaite
     @Override
     public Waiter selectByUUID(String uuid) {
         Waiter waiter = this.waiterMapper.findWaiterByID(uuid);
+        //System.out.println(waiter);
         return waiter;
     }
 }

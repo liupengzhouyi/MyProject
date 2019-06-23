@@ -37,6 +37,16 @@ public class WaiterOperationController {
         return modelAndView;
     }
 
+    /**
+     * 转向-ID查询页面
+     * @return
+     */
+    @RequestMapping(path = "/findWaiterByID")
+    public ModelAndView findWaiterByID() {
+        String returnPageName = TheGlobalVariable.FINDWAITERBYID;
+        ModelAndView modelAndView = new ModelAndView(returnPageName);
+        return modelAndView;
+    }
 
 
 }

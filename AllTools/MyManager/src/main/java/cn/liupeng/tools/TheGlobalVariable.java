@@ -40,5 +40,12 @@ public class TheGlobalVariable {
     // 用户ID或者密码输入错误
     public static String ERROELANDINGINFORMATION = "user ID or password was error";
 
+    // 获取所有服务员信息
+    public static String ALLWAITERINFORMATION = "waiter/allWaiterInformation";
 
+    // 获取一个服务员信息
+    public static String FINDONEWAITER = "waiter/findWaiter";
+
+    //转向 用ID 查询 服务员页面
+    public static String FINDWAITERBYID = "waiter/findWaiterFrom";
 }

@@ -7,6 +7,7 @@ import cn.liupeng.tools.DateTime.GetDateTime;
 import cn.liupeng.tools.IPAdress.IPAdress;
 import cn.liupeng.tools.Password.CheakPasswordTool;
 import cn.liupeng.tools.Password.PasswordToPasswordValue;
+import cn.liupeng.tools.Return.Information;
 import cn.liupeng.tools.TheGlobalVariable;
 import cn.liupeng.tools.User.CreateUser_ID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,6 +101,61 @@ public class WaiterController {
             System.out.println(waiter);
         }
         ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.ERROR);
+        return modelAndView;
+    }
+
+
+    /**
+     * 获取所有的服务员信息
+     * @return
+     */
+    @RequestMapping(path = "/allWaiter")
+    public ModelAndView allWaiter() {
+        List<Waiter> list = this.waiterService.select();
+        Information information = new Information();
+        information.setRunLocation("cn.liupeng.controller.WaiterController");
+        information.setRunFunctionName("获取所有服务员信息");
+        information.setRunFunctionName("allWaiter()");
+        information.setHasReturnObject(true);
+        information.setObjectType("List<Waiter>");
+        information.setObject(list);
+        String returnInformation;
+        if (list.size() > 0) {
+            returnInformation = "获取到信息";
+        } else {
+            returnInformation = "没有获取到信息";
+        }
+        information.setReturnInformation(returnInformation);
+        ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.ALLWAITERINFORMATION);
+        modelAndView.addObject("returnInformation", information);
+        modelAndView.addObject("listLength", list.size());
+        return modelAndView;
+    }
+
+    /**
+     * 通过服务员ID查找服务员信息
+     * @return
+     */
+    @RequestMapping(path = "/findWaiterByID")
+    public ModelAndView findWaiterByID(String waiter_id) {
+        Waiter waiter = this.waiterService.selectByUUID(waiter_id);
+        Information information = new Information();
+        information.setRunLocation("cn.liupeng.controller.WaiterController");
+        information.setRunFunctionName("通过服务员ID获取服务员信息");
+        information.setRunFunctionName("findWaiterByID");
+        information.setHasReturnObject(true);
+        information.setObjectType("Waiter");
+        information.setObject(waiter);
+        String returnInformation;
+        if (waiter.equals(null)) {
+            returnInformation = "没有获取到信息";
+        } else {
+            returnInformation = "获取到信息";
+        }
+        information.setReturnInformation(returnInformation);
+        System.out.println(information);
+        ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.FINDONEWAITER);
+        modelAndView.addObject("returnInformation", information);
         return modelAndView;
     }
 

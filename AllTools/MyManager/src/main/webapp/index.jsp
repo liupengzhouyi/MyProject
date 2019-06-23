@@ -29,5 +29,9 @@
 
 <a href="/waiterOperation/landing">服务员登陆</a>
 
+<a href="waiter/allWaiter">获取所有服务员</a>
+
+<a href="/waiterOperation/findWaiterByID"> 通过服务员ID查询服务员 </a>
+
 </body>
 </html>
