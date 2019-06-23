@@ -22,4 +22,11 @@ public interface IWaiterService extends IBaseService<Waiter> {
      * @param waiter
      */
     public void resetWaiterPassword(Waiter waiter);
+
+    /**
+     * 修改服务员名字
+     * @param waiter
+     */
+    public void resetWaiterName(Waiter waiter);
+
 }

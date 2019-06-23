@@ -79,6 +79,15 @@ public class TheGlobalVariable {
     // 获取要查询的服务员的ID
     public static String SELECTWAITERLANDINGID = "waiter/waiterLandingRecord";
 
+    // 服务员修改用户名-输入旧名字
+    public static String INPUTORDNAME = "waiter/inputOrderName";
 
+    // 服务员修改用户名-输入新名字
+    public static String INPUTNEWNAME = "waiter/inputNewName";
 
+    // 修改名字是没有输入名字
+    public static String NONAME = "no name";
+
+    // 修改服务员用户名成功
+    public static String RESETWAITERNAMESUCCESS = "waiter/resetnamesuccess";
 }

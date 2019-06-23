@@ -232,7 +232,6 @@ public class WaiterController {
         return modelAndView;
     }
 
-
     /**
      * 修改新的密码
      * @param waiter_password
@@ -275,5 +274,81 @@ public class WaiterController {
         return modelAndView;
     }
 
+
+    /**
+     * 校验用户数据的用户名与密码
+     * @param waiter_id
+     * @param waiter_password
+     * @param httpServletRequest
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(path = "/verifyIDAndPassword")
+    public ModelAndView verifyIDAndPassword(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest) throws Exception {
+        // 开始操作
+        boolean key = false;
+        String waiter_password_value = new PasswordToPasswordValue(waiter_password).getPasswordVlaue() + "";
+        Waiter waiter = new Waiter(waiter_id, waiter_password_value);
+        String waiter_registered_ip_adress = new IPAdress(httpServletRequest).getIpAdress();
+        waiter.setWaiter_registered_ip_adress(waiter_registered_ip_adress);
+        key = this.waiterService.landing(waiter);
+        String checkInformation = "";
+        String returnPage = "";
+        if (key) {
+            // 用户ID与密码校验没有问题
+            checkInformation = TheGlobalVariable.RIGHTIDORPASSWORD;
+            returnPage = TheGlobalVariable.INPUTNEWNAME;
+            // 添加Session 中添加服务员的ID
+            HttpSession httpSession = httpServletRequest.getSession();
+            httpSession.setAttribute("waiter_id", waiter.getWaiter_id());
+        } else {
+            // 用户名或者密码错误
+            checkInformation = TheGlobalVariable.ERROEIDORPASSWORD;
+            returnPage = TheGlobalVariable.WAITERERRORPAGE;
+        }
+        Information information = new Information();
+        information.setRunLocation("cn.liupeng.controller.WaiterController");
+        information.setRunfunction("服务员修改用户名，校验ID和密码是否合法和配套");
+        information.setRunFunctionName("checkOldPassword(String waiter_id, String waiter_password, HttpServletRequest httpServletRequest)");
+        information.setHasReturnObject(false);
+        information.setReturnInformation(checkInformation);
+        //System.out.println(information);
+        ModelAndView modelAndView = new ModelAndView(returnPage);
+        modelAndView.addObject("returnInformation", information);
+        return modelAndView;
+    }
+
+    /**
+     * 修改服务员用户名
+     * @param waiter_name
+     * @param httpServletRequest
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping(path = "/resetName")
+    public ModelAndView resetName(String waiter_name, HttpServletRequest httpServletRequest) throws Exception {
+        HttpSession httpSession = httpServletRequest.getSession();
+        String returnInformation = "";
+        Information information = new Information();
+        information.setRunLocation("cn.liupeng.controller.WaiterController");
+        information.setRunFunctionName("resetName(String waiter_name, HttpServletRequest httpServletRequest)");
+        information.setRunfunction("修改服务员密码");
+        information.setHasReturnObject(false);
+        String waiter_id = (String) httpSession.getAttribute("waiter_id");
+        Waiter waiter = new Waiter();
+        waiter.setWaiter_name(waiter_name);
+        waiter.setWaiter_id(waiter_id);
+        if ("".equals(waiter.getWaiter_name())) {
+            // 没有输入用户名
+            information.setReturnInformation(TheGlobalVariable.NONAME);
+        } else {
+            // 开始与数据库交互修改用户民
+            information.setReturnInformation("修改服务员用户名成功");
+            this.waiterService.resetWaiterName(waiter);
+        }
+        ModelAndView modelAndView = new ModelAndView(TheGlobalVariable.RESETWAITERNAMESUCCESS);
+        modelAndView.addObject("returnInformation", information);
+        return modelAndView;
+    }
 
 }
