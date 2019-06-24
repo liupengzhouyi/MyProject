@@ -55,7 +55,7 @@ public class WaiterServiceImpl extends BaseServiceImpl<Waiter> implements IWaite
     }
 
     /**
-     * 修改服务员密码
+     * 修改服务员用户名
      * @param waiter
      */
     @Override

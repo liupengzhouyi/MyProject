@@ -60,7 +60,7 @@ public class WaiterOperationController {
     }
 
     /**
-     * 服务员修改用户名 - 输入旧密码页面
+     * 服务员修改用户名 - 输入旧名字页面
      * @return
      */
     @RequestMapping(path = "/inputOrderName")

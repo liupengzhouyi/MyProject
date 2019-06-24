@@ -237,7 +237,7 @@ public class WaiterController {
      * @param waiter_password
      * @param waiter_confirm_password
      * @param httpServletRequest
-     * @return
+     * @ret###urn
      */
     @RequestMapping(path = "/resetPassword")
     public ModelAndView resetPassword(String waiter_password, String waiter_confirm_password, HttpServletRequest httpServletRequest) {
